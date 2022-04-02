@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [joke, setJoke] = useState();
+  const [joke, setJoke] = useState([]);
+
+  const synthesis = window.speechSynthesis;
+  const utterance = new SpeechSynthesisUtterance(joke.joke);
 
   const fetchJoke = async () => {
     const response = await fetch(
@@ -9,17 +12,31 @@ function App() {
     );
     const jokeData = await response.json();
     setJoke(jokeData);
-    console.log(jokeData);
   };
 
-  useEffect(() => {
-    fetchJoke();
-  }, []);
+  const speakJoke = () => {
+    if (synthesis.speaking) {
+      synthesis.cancel();
+
+      setTimeout(function () {
+        synthesis.speak(utterance);
+      }, 250);
+    } else {
+      speechSynthesis.speak(utterance);
+    }
+  };
 
   return (
     <>
-      <h1>{joke.joke}</h1>
-      <button onClick={fetchJoke}>Tell me a joke</button>
+      {joke !== undefined ? <h1>{joke.joke}</h1> : ""}
+      <button
+        onClick={() => {
+          fetchJoke();
+          speakJoke();
+        }}
+      >
+        Tell me a joke
+      </button>
     </>
   );
 }
