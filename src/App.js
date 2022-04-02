@@ -1,20 +1,22 @@
 import { useState } from "react";
 
 function App() {
-  const [joke, setJoke] = useState([]);
-
+  const [joke, setJoke] = useState("");
   const synthesis = window.speechSynthesis;
-  const utterance = new SpeechSynthesisUtterance(joke.joke);
 
-  const fetchJoke = async () => {
+  window.onload = function () {
+    synthesis.cancel();
+  };
+
+  const tellJoke = async () => {
     const response = await fetch(
       "https://v2.jokeapi.dev/joke/Programming,Pun?type=single"
     );
     const jokeData = await response.json();
-    setJoke(jokeData);
-  };
+    setJoke(jokeData.joke);
 
-  const speakJoke = () => {
+    const utterance = new SpeechSynthesisUtterance(jokeData.joke);
+
     if (synthesis.speaking) {
       synthesis.cancel();
 
@@ -22,21 +24,20 @@ function App() {
         synthesis.speak(utterance);
       }, 250);
     } else {
-      speechSynthesis.speak(utterance);
+      synthesis.speak(utterance);
     }
   };
 
   return (
     <>
-      {joke !== undefined ? <h1>{joke.joke}</h1> : ""}
       <button
         onClick={() => {
-          fetchJoke();
-          speakJoke();
+          tellJoke();
         }}
       >
         Tell me a joke
       </button>
+      <h1>{joke}</h1>
     </>
   );
 }
