@@ -3,6 +3,12 @@ import { useState } from "react";
 function App() {
   const [joke, setJoke] = useState("");
   const synthesis = window.speechSynthesis;
+  const voices = synthesis.getVoices();
+  let voice = [];
+
+  for (var i = 0; i < voices.length; i++) {
+    voice.push(voices[i].name + " (" + voices[i].lang + ")");
+  }
 
   window.onload = function () {
     synthesis.cancel();
@@ -30,6 +36,16 @@ function App() {
 
   return (
     <>
+      <select name="">
+        <option value="default">Default</option>
+        {voice.map((lang) => {
+          return (
+            <option key={lang} value={lang}>
+              {lang}
+            </option>
+          );
+        })}
+      </select>
       <button
         onClick={() => {
           tellJoke();
