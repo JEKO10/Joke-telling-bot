@@ -1,4 +1,5 @@
 import { useState } from "react";
+import robot from "./robot.gif";
 
 function App() {
   const [joke, setJoke] = useState("");
@@ -45,7 +46,15 @@ function App() {
   };
 
   return (
-    <>
+    <section className="main">
+      <img src={robot} alt="IMG" />
+      <button
+        onClick={() => {
+          tellJoke();
+        }}
+      >
+        Tell me a joke
+      </button>
       <select onChange={onChangeHandler}>
         <option value="default">Select Voice</option>
         {voice.map((lang, index) => {
@@ -56,15 +65,8 @@ function App() {
           );
         })}
       </select>
-      <button
-        onClick={() => {
-          tellJoke();
-        }}
-      >
-        Tell me a joke
-      </button>
       <h1>{joke}</h1>
-    </>
+    </section>
   );
 }
 

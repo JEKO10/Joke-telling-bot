@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #20738c;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Work Sans", sans-serif;
+
+  img {
+    margin-bottom: 3rem;
+  }
+
+  button {
+    background-color: #e7e7e7;
+    color: #20738c;
+    font-size: 1.5rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    border: none;
+    padding: 15px 30px;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 500ms ease;
+
+    &:hover {
+      background: none;
+      color: #e7e7e7;
+      border: 2px solid #e7e7e7;
+      box-shadow: 0 0 25px #fff;
+    }
+  }
+
+  select {
+    background-color: #e7e7e7;
+    color: #20738c;
+    font-size: 1.2rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    &:hover {
+      box-shadow: 0 0 25px #fff;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    color: #e7e7e7;
+    font-size: 2rem;
+    margin: 3rem 0;
+    max-width: 80%;
+  }
+}
