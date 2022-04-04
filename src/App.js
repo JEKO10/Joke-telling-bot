@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [joke, setJoke] = useState("");
+  const [lang, setLang] = useState(0);
   const synthesis = window.speechSynthesis;
   const voices = synthesis.getVoices();
   let voice = [];
@@ -23,6 +24,8 @@ function App() {
 
     const utterance = new SpeechSynthesisUtterance(jokeData.joke);
 
+    utterance.voice = synthesis.getVoices()[lang];
+
     if (synthesis.speaking) {
       synthesis.cancel();
 
@@ -34,13 +37,20 @@ function App() {
     }
   };
 
+  const onChangeHandler = (e) => {
+    const index = e.target.selectedIndex;
+    const option = e.target.childNodes[index];
+    const id = option.getAttribute("id");
+    setLang(id);
+  };
+
   return (
     <>
-      <select name="">
-        <option value="default">Default</option>
-        {voice.map((lang) => {
+      <select onChange={onChangeHandler}>
+        <option value="default">Select Voice</option>
+        {voice.map((lang, index) => {
           return (
-            <option key={lang} value={lang}>
+            <option key={index} value={lang} id={index}>
               {lang}
             </option>
           );
