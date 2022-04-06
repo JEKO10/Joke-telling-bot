@@ -4,6 +4,8 @@ import robot from "./robot.gif";
 function App() {
   const [joke, setJoke] = useState("");
   const [lang, setLang] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+
   const synthesis = window.speechSynthesis;
   const voices = synthesis.getVoices();
   let voice = [];
@@ -51,20 +53,25 @@ function App() {
       <button
         onClick={() => {
           tellJoke();
+          setIsClicked(true);
         }}
       >
         Tell me a joke
       </button>
-      <select onChange={onChangeHandler}>
-        <option value="default">Select Voice</option>
-        {voice.map((lang, index) => {
-          return (
-            <option key={index} value={lang} id={index}>
-              {lang}
-            </option>
-          );
-        })}
-      </select>
+      {isClicked ? (
+        <select onChange={onChangeHandler}>
+          <option value="default">Select Voice</option>
+          {voice.map((lang, index) => {
+            return (
+              <option key={index} value={lang} id={index}>
+                {lang}
+              </option>
+            );
+          })}
+        </select>
+      ) : (
+        ""
+      )}
       <h1>{joke}</h1>
     </section>
   );
