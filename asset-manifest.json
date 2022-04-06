@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Joke-telling-bot/static/css/main.2da4eadb.css",
+    "main.css": "/Joke-telling-bot/static/css/main.2d31a3af.css",
     "main.js": "/Joke-telling-bot/static/js/main.07f42cb0.js",
     "static/js/787.c21f8c9c.chunk.js": "/Joke-telling-bot/static/js/787.c21f8c9c.chunk.js",
     "static/media/robot.gif": "/Joke-telling-bot/static/media/robot.8125ce1502b1996c94ef.gif",
     "index.html": "/Joke-telling-bot/index.html",
-    "main.2da4eadb.css.map": "/Joke-telling-bot/static/css/main.2da4eadb.css.map",
+    "main.2d31a3af.css.map": "/Joke-telling-bot/static/css/main.2d31a3af.css.map",
     "main.07f42cb0.js.map": "/Joke-telling-bot/static/js/main.07f42cb0.js.map",
     "787.c21f8c9c.chunk.js.map": "/Joke-telling-bot/static/js/787.c21f8c9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2da4eadb.css",
+    "static/css/main.2d31a3af.css",
     "static/js/main.07f42cb0.js"
   ]
 }
