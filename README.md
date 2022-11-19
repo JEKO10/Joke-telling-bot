@@ -17,7 +17,7 @@ This is a solution to the [DevProjects](https://www.codementor.io/projects/web/j
 
 ## Project overview
 
-I created voice array that takes voices's name from synthesis.getVoices(). Then I fetched Joke API to get jokes and pass them to utterance. If a user clicks on a button for a new joke, before previous is finished, the previous joke stops and new joke will be told. Changing languages is made with options index and id. I displayed languages with map method.
+I created a voice array that takes voices' names from synthesis.getVoices(). Then I fetched Joke API to get jokes and pass them to utterance. If a user clicks on a button for a new joke, before the previous one is finished, the previous joke stops, and a new joke will be told. Changing languages is made with options index and id. I displayed languages with the map method.
 
 ## Built with
 
